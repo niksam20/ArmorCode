@@ -4,11 +4,12 @@ FROM openjdk:11-jdk-slim
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Java source code to the container
+# Copy the Java source code and README.md to the container
 COPY HelloWorld.java .
+COPY README.md .
 
 # Compile the Java program
 RUN javac HelloWorld.java
 
-# Command to run the application
-CMD ["java", "HelloWorld"]
+# Default command to run the application and print README.md
+CMD java HelloWorld && echo "Content of README.md:" && cat README.md
